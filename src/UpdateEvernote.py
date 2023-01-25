@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:49:46 trottar"
+# Time-stamp: "2023-01-25 17:53:42 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -23,7 +23,7 @@ EVERNOTE_DEV = os.getenv('EVERNOTE_DEV')
 client = EvernoteClient(token=str(EVERNOTE_DEV))
 userStore = client.get_user_store()
 user = userStore.getUser()
-print("\nRunning for '{}'...\n\n".format(user.username))
+print("\nRunning for user '{}'...\n\n".format(user.username))
 
 noteStore = client.get_note_store()
 
@@ -36,12 +36,12 @@ for nb in notebooks:
     print("\t-> ",nb.name)
     nb_list.append(nb)
     nb_name_list.append(nb.name)
-    #note_filter = noteStore.NoteFilter(notebookGuid=nb)
-    #notes_list = note_store.findNotes(note_filter, 0, 100) # retrieve the first 100 notes
+    note_filter = noteStore.NoteFilter(notebookGuid=nb.guid)
+    notes_list =  noteStore.findNotes(note_filter, 0, 100) # retrieve the first 100 notes
 
     # Iterate through the list of notes and print the title of each note
-    #for note in notes_list.notes:
-    #    print(note.title)
+    for note in notes_list.notes:
+        print(note.title)
     
 tags = noteStore.listTags()
 tag_name_list = []
