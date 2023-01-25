@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-24 23:44:04 trottar"
+# Time-stamp: "2023-01-25 14:14:27 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -14,7 +14,7 @@ from evernote.api.client import EvernoteClient
 import evernote.edam.type.ttypes as Types
 import evernote.edam.error.ttypes as Errors
 
-def makeNote(authToken, noteStore, noteTitle, noteBody, parentNotebook=None):
+def makeNote(authToken, noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
 
     print("\nAdding note to {}...\n".format(parentNotebook.name))
     
@@ -27,6 +27,9 @@ def makeNote(authToken, noteStore, noteTitle, noteBody, parentNotebook=None):
     ourNote.title = noteTitle
     ourNote.content = nBody
 
+    if noteTag != None:
+        ourTag = noteTag                
+    
     print('''
 
      {0}
@@ -38,13 +41,13 @@ def makeNote(authToken, noteStore, noteTitle, noteBody, parentNotebook=None):
     '''.format("_"*len(noteTitle),noteTitle,"-"*len(noteTitle),noteBody,"_"*len(noteTitle)))
 
     ## parentNotebook is optional; if omitted, default notebook is used
-    #if parentNotebook and hasattr(parentNotebook, 'guid'):
     if parentNotebook != None:
         ourNote.notebookGuid = parentNotebook.guid
 
     ## Attempt to create note in Evernote account
     try:
         note = noteStore.createNote(authToken, ourNote)
+        tag = tagStore.createTag(authToken, ourTag)
     except Errors.EDAMUserException as edue:
         ## Something was wrong with the note data
         ## See EDAMErrorCode enumeration for error code explanation
