@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 02:25:32 trottar"
+# Time-stamp: "2023-01-25 02:26:41 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -33,7 +33,7 @@ def import_bookmarks():
     for folder in chrome_bookmarks.folders:
         if "Must Read" == folder.name:
             print("\nImporting data for bookmarks from {}...".format(folder.name))
-            for i,url in tqdm(enumerate(folder.urls), position=0):
+            for i,url in tqdm(enumerate(folder.urls), bar_format='{l_bar}{bar:10}{r_bar}{bar:-10b}'):
                 bookmarkDict.update({"folder" : folder.name})
                 bookmarkDict.update({"title" : url.name.lower()})
                 bookmarkDict.update({"url" : url.url})
