@@ -3,7 +3,7 @@
 #
 # Description: https://www.activestate.com/blog/how-to-do-text-summarization-with-python/
 # ================================================================
-# Time-stamp: "2023-01-25 01:47:32 trottar"
+# Time-stamp: "2023-01-25 01:48:22 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -22,7 +22,7 @@ url="https://www.symmetrymagazine.org/article/a-universe-is-born"
 article = Article(url)
 article.download()
 article.parse()
-#print(article.text)
+print(article.text)
 
 def summarize(text, per):
     nlp = spacy.load('en_core_web_sm')
