@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:53:42 trottar"
+# Time-stamp: "2023-01-25 18:01:06 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -36,17 +36,13 @@ for nb in notebooks:
     print("\t-> ",nb.name)
     nb_list.append(nb)
     nb_name_list.append(nb.name)
-    note_filter = noteStore.NoteFilter(notebookGuid=nb.guid)
-    notes_list =  noteStore.findNotes(note_filter, 0, 100) # retrieve the first 100 notes
 
-    # Iterate through the list of notes and print the title of each note
-    for note in notes_list.notes:
-        print(note.title)
-    
+print("List of available tags...\n")
 tags = noteStore.listTags()
 tag_name_list = []
 tag_list = []
 for t in tags:
+    print("\t-> ",t.name)
     tag_list.append(t)
     tag_name_list.append(t.name)
     
