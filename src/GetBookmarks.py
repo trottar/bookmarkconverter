@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 13:24:30 trottar"
+# Time-stamp: "2023-01-25 13:29:04 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -66,8 +66,10 @@ def import_bookmarks():
                 bookmarkDict = {k : bookmarkDict[k] for k in sorted(bookmarkDict.keys())}
                 df = df.append(bookmarkDict,ignore_index=True)
                 if len(folder.urls) > 1:
+                    print("\t\t")
                     Tools.progressBar(i, len(folder.urls)-1,bar_length=25)
                 else:
+                    print("\t\t")
                     Tools.progressBar(i, len(folder.urls),bar_length=25)
                 if ERROR != True:
                     print("DONE")
