@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:24:53 trottar"
+# Time-stamp: "2023-01-25 17:25:27 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -71,7 +71,7 @@ for i, row in bm_df.iterrows():
         tags_list.append(noteTag)
         tags_name_list.append(noteTag.name)
         print("a",noteTag.guid)
-    tag = tags_list[tags_name_list.index(nameTag)
+    tag = tags_list[tags_name_list.index(nameTag)]
     
     if row["summary"] == "":
         url_str = \
