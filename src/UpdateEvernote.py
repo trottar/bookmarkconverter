@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:30:15 trottar"
+# Time-stamp: "2023-01-25 17:31:13 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -65,7 +65,7 @@ for i, row in bm_df.iterrows():
     noteStore.updateNotebook(inp_nb)
 
 
-    if "bookmarks" not in tag_list:
+    if "bookmarks" not in tag_name_list:
         print("\nAdding tag {}...\n".format("bookmarks"))
         noteTag = Types.Tag()
         noteTag.name = "bookmarks"
