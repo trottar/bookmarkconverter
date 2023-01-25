@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 13:49:57 trottar"
+# Time-stamp: "2023-01-25 13:52:52 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -60,6 +60,7 @@ for i, row in bm_df.iterrows():
     <br/>
     <br/>
     <span style="font-weight:bold;color:black;">Quick Summary:</span>
+    <hr/>
     <br/>
     <br/>
     {1}
