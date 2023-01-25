@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 14:29:33 trottar"
+# Time-stamp: "2023-01-25 14:32:42 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -53,6 +53,8 @@ for i, row in bm_df.iterrows():
         nb_list.append(notebook)
         nb_name_list.append(notebook.name)
     inp_nb = nb_list[nb_name_list.index(row["folder"])]
+    inp_nb.stack = "New Stack"
+    noteStore.updateNotebook(inp_nb)
     if row["summary"] == "":
         url_str = \
         '''
