@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 13:29:04 trottar"
+# Time-stamp: "2023-01-25 13:31:05 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -41,6 +41,7 @@ def import_bookmarks():
                 bookmarkDict.update({"summary" : grabText(url.url)})
                 print("\t-> ",url.name.lower())
                 #print(url, "\n\n","-"*70)
+                '''
                 url = url.url
                 try:
                     with urllib.request.urlopen(url) as response:
@@ -55,6 +56,7 @@ def import_bookmarks():
                     print("ERROR: Check soup...")
                     ERROR=True
                     continue
+                '''
                 # Get text from site
                 '''
                 text = ''
@@ -66,10 +68,8 @@ def import_bookmarks():
                 bookmarkDict = {k : bookmarkDict[k] for k in sorted(bookmarkDict.keys())}
                 df = df.append(bookmarkDict,ignore_index=True)
                 if len(folder.urls) > 1:
-                    print("\t\t")
                     Tools.progressBar(i, len(folder.urls)-1,bar_length=25)
                 else:
-                    print("\t\t")
                     Tools.progressBar(i, len(folder.urls),bar_length=25)
                 if ERROR != True:
                     print("DONE")
