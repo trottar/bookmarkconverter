@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:19:29 trottar"
+# Time-stamp: "2023-01-25 17:33:47 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -13,25 +13,6 @@
 from evernote.api.client import EvernoteClient
 import evernote.edam.type.ttypes as Types
 import evernote.edam.error.ttypes as Errors
-
-def makeTag(noteStore, nameTag):
-
-    tags = noteStore.listTags()
-    tags_list = []
-    tags_name_list = []
-    for t in tags:
-        tags_list.append(t)
-        tags_name_list.append(t.name)
-    if nameTag not in tags_list:
-        print("\nAdding tag {}...\n".format(nameTag))
-        noteTag = Types.Tag()
-        noteTag.name = nameTag
-        noteTag = noteStore.createTag(noteTag)
-        tags_list.append(noteTag)
-        tags_name_list.append(noteTag.name)
-        print("a",noteTag.guid)
-    ourTag = tags_list[tags_name_list.index(nameTag)]       
-    return ourTag
 
 def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
 
@@ -46,7 +27,6 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
     ourNote.title = noteTitle
     ourNote.content = nBody
 
-    print("1~~~~~~~",noteTag)
     if noteTag != None:
         ourTag = noteTag
     
@@ -66,10 +46,9 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
 
     ## Attempt to create note in Evernote account
     try:
-        print("2~~~~~~~",ourTag)
+        
         if noteTag != None:
             ourTag = noteStore.getTag(ourTag.name)
-            print("3~~~~~~~",ourTag)
             ourNote.tagGuids = [ourTag]
         note = noteStore.createNote(ourNote)
     except Errors.EDAMUserException as edue:
