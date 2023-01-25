@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 05:01:19 trottar"
+# Time-stamp: "2023-01-25 12:48:36 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -36,6 +36,13 @@ for nb in notebooks:
     print("\t-> ",nb.name)
     nb_list.append(nb)
     nb_name_list.append(nb.name)
+    note_filter = NoteStore.NoteFilter(notebookGuid=nb)
+    notes_list = note_store.findNotes(note_filter, 0, 100) # retrieve the first 100 notes
+
+    # Iterate through the list of notes and print the title of each note
+    for note in notes_list.notes:
+        print(note.title)
+
 print("-"*30)
 
 for i, row in bm_df.iterrows():
