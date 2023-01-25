@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:27:22 trottar"
+# Time-stamp: "2023-01-25 17:30:15 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -44,11 +44,11 @@ for nb in notebooks:
     #    print(note.title)
     
 tags = noteStore.listTags()
-tags_list = []
-tags_name_list = []
+tag_name_list = []
+tag_list = []
 for t in tags:
-    tags_list.append(t)
-    tags_name_list.append(t.name)
+    tag_list.append(t)
+    tag_name_list.append(t.name)
     
 print("-"*30)
 
@@ -65,15 +65,15 @@ for i, row in bm_df.iterrows():
     noteStore.updateNotebook(inp_nb)
 
 
-    if "bookmarks" not in tags_list:
+    if "bookmarks" not in tag_list:
         print("\nAdding tag {}...\n".format("bookmarks"))
         noteTag = Types.Tag()
         noteTag.name = "bookmarks"
+        print(noteTag.name)
         noteTag = noteStore.createTag(noteTag)
-        tags_list.append(noteTag)
-        tags_name_list.append(noteTag.name)
-        print("a",noteTag.guid)
-    tag = tags_list[tags_name_list.index("bookmarks")]
+        tag_list.append(noteTag)
+        tag_name_list.append(noteTag.name)
+    tag = tag_list[tag_name_list.index("bookmarks")]
     
     if row["summary"] == "":
         url_str = \
