@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 14:54:54 trottar"
+# Time-stamp: "2023-01-25 15:02:17 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -29,6 +29,7 @@ def makeNote(authToken, noteStore, noteTitle, noteBody, noteTag=None, parentNote
 
     if noteTag != None:
         ourTag = noteTag
+        tags = noteStore.listTags()
         tags_list = []
         for t in tags:
             tags_list.append(t.name)
