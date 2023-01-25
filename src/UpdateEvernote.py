@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 03:16:31 trottar"
+# Time-stamp: "2023-01-25 03:17:12 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -44,7 +44,7 @@ for i, row in bm_df.iterrows():
             inp_nb.name = row["folder"]
             inp_nb = noteStore.createInp_Nb(inp_nb)
     url_str = \
-    ''
+    '''
     <a href="{0}">{0}</a>
     <br/>
     <br/>
@@ -54,6 +54,6 @@ for i, row in bm_df.iterrows():
     <br/>
     {1}
     <br/>
-    ''.format(row["url"],row["summary"].replace('\n', '<br/>'))
+    '''.format(row["url"],row["summary"].replace('\n', '<br/>'))
     makeNote(EVERNOTE_DEV, noteStore, row["title"], url_str, inp_nb)
 
