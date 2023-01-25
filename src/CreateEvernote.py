@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 15:51:05 trottar"
+# Time-stamp: "2023-01-25 15:54:23 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -14,18 +14,18 @@ from evernote.api.client import EvernoteClient
 import evernote.edam.type.ttypes as Types
 import evernote.edam.error.ttypes as Errors
 
-def makeTag(noteStore, tagName):    
+def makeTag(noteStore, nameTag):
 
-    tag = Types.Tag()
-    tag.name = tagName
+    ourTag = Types.Tag()
+    ourTag.name = nameTag
     
-    tags = noteStore.listTags()
+    ourTags = noteStore.listTags()
     tags_list = []
     for t in tags:
         tags_list.append(t.name)
-    if noteTag.name not in tags_list:
-        print("\nAdding tag {}...\n".format(noteTag.name))
-        noteTag = noteStore.createTag(noteTag)
+    if ourTag.name not in tags_list:
+        print("\nAdding tag {}...\n".format(ourTag.name))
+        ourTag = noteStore.createTag(ourTag)
 
     return noteTag
 
