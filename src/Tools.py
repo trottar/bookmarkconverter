@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 13:31:18 trottar"
+# Time-stamp: "2023-01-25 13:43:44 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -33,6 +33,5 @@ def progressBar(value, endvalue, bar_length=50):
     else:
         endl = ''
 
-    #sys.stdout.write(" \r[{0}] {1}%\r{2}\r".format(arrow + spaces, round(percent * 100), endl))
-    sys.stdout.write(" [{0}] {1}%\r{2}\r".format(arrow + spaces, round(percent * 100), endl))
+    sys.stdout.write(" \r[{0}] {1}%\r{2}\r".format(arrow + spaces, round(percent * 100), endl))
     sys.stdout.flush()
