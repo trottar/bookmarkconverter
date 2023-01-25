@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 18:51:43 trottar"
+# Time-stamp: "2023-01-25 18:54:47 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -46,15 +46,15 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
     if parentNotebook != None:
         ourNote.notebookGuid = parentNotebook.guid
         
-        note_filter = NoteFilter()
+        note_filter = NoteFilter(notebookGuid=ourNote.notebookGuid)
         print(note_filter)
         note_filter.words = "title:"+ourNote.title
         print(note_filter.words)
-        search_result = noteStore.findNoteCounts(note_filter, False)
+        search_result = noteStore.findNotes(note_filter, 0, 1)
         print(search_result)
         print(ourNote.notebookGuid)
  
-        if ourNote.notebookGuid not in search_result.notebookCounts or search_result.notebookCounts[ourNote.notebookGuid] == 0:
+        if len(search_result.notes) == 0:
             print("{} -> Note does not exist".format(ourNote.title))
         else:
             print("{} -> Note already exists".format(ourNote.title))
