@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:22:12 trottar"
+# Time-stamp: "2023-01-25 17:23:56 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -56,6 +56,23 @@ for i, row in bm_df.iterrows():
     inp_nb = nb_list[nb_name_list.index(row["folder"])]
     inp_nb.stack = "Chrome Bookmarks"
     noteStore.updateNotebook(inp_nb)
+
+    tags = noteStore.listTags()
+    tags_list = []
+    tags_name_list = []
+    for t in tags:
+        tags_list.append(t)
+        tags_name_list.append(t.name)
+    if nameTag not in tags_list:
+        print("\nAdding tag {}...\n".format(nameTag))
+        noteTag = Types.Tag()
+        noteTag.name = nameTag
+        noteTag = noteStore.createTag(noteTag)
+        tags_list.append(noteTag)
+        tags_name_list.append(noteTag.name)
+        print("a",noteTag.guid)
+    tag = tags_list[tags_name_list.index(nameTag)
+    
     if row["summary"] == "":
         url_str = \
         '''
@@ -77,22 +94,6 @@ for i, row in bm_df.iterrows():
         <br/>
         '''.format(row["url"],row["summary"].replace('\n', '<br/>'))
 
-    tags = noteStore.listTags()
-    tags_list = []
-    tags_name_list = []
-    for t in tags:
-        tags_list.append(t)
-        tags_name_list.append(t.name)
-    if nameTag not in tags_list:
-        print("\nAdding tag {}...\n".format(nameTag))
-        noteTag = Types.Tag()
-        noteTag.name = nameTag
-        noteTag = noteStore.createTag(noteTag)
-        tags_list.append(noteTag)
-        tags_name_list.append(noteTag.name)
-        print("a",noteTag.guid)
-    tag = tags_list[tags_name_list.index(nameTag)
-        
     #tag = makeTag(noteStore, "bookmarks")
     print("0~~~~~~~",tag)
     makeNote(noteStore, row["title"], url_str, noteTag=tag, parentNotebook=inp_nb)
