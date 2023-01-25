@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 02:06:41 trottar"
+# Time-stamp: "2023-01-25 02:14:43 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -33,10 +33,7 @@ def import_bookmarks():
         if "Must Read" == folder.name:
             print("\nImporting data for bookmarks from {}...".format(folder.name))
             for i,url in enumerate(folder.urls):
-                if len(folder.urls) > 1:
-                    Tools.progressBar(i, len(folder.urls)-1,bar_length=25)
-                else:
-                    Tools.progressBar(i, len(folder.urls),bar_length=25)
+                bookmarkDict.update({"folder" : folder.name})
                 bookmarkDict.update({"title" : url.name.lower()})
                 bookmarkDict.update({"url" : url.url})
                 bookmarkDict.update({"summary" : grabText(url.url)})
@@ -62,6 +59,10 @@ def import_bookmarks():
                 '''
                 bookmarkDict = {k : bookmarkDict[k] for k in sorted(bookmarkDict.keys())}
                 df = df.append(bookmarkDict,ignore_index=True)
+                if len(folder.urls) > 1:
+                    Tools.progressBar(i, len(folder.urls)-1,bar_length=25)
+                else:
+                    Tools.progressBar(i, len(folder.urls),bar_length=25)
             print("\n")
     print("-"*70)
     print(df)
