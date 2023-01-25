@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:03:30 trottar"
+# Time-stamp: "2023-01-25 17:10:47 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -16,32 +16,22 @@ import evernote.edam.error.ttypes as Errors
 
 def makeTag(noteStore, nameTag):
 
-    ourTag = Types.Tag()
-    ourTag.name = nameTag
+
     
     tags = noteStore.listTags()
     tags_list = []
+    tags__name_list = []
     for t in tags:
-        print("!!!",t.name)
-        tags_list.append(t.name)
-    if ourTag.name in tags_list:
-        for t in tags:
-            if ourTag.name == t:
-                ourTag = t
-        print("b",ourTag.guid)
-        noteStore.updateTag(ourTag)
-        return ourTag
-#    tag = noteStore.getTag(nameTag)
-#        print("b",tag.guid)
-#        n_ourTag = noteStore.createTag(tag)
-#        return noteStore.updateTag(n_ourTag)
-    
-    else:
+        tags_list.append(t)
+        tags_name_list.append(t.name)
+    if nameTag not in tags_list:
         print("\nAdding tag {}...\n".format(ourTag.name))
+        ourTag = Types.Tag()
+        ourTag.name = nameTag
         ourTag = noteStore.createTag(ourTag)
         print("a",ourTag.guid)
-        noteStore.updateTag(ourTag)
-        return ourTag
+    ourTag = ourTag[nameTag.index(nameTag)]       
+    return ourTag
 
 def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
 
