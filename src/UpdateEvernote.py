@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:48:24 trottar"
+# Time-stamp: "2023-01-25 17:49:46 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -54,7 +54,7 @@ print("-"*30)
 
 for i, row in bm_df.iterrows():
     if row["folder"] not in nb_name_list:
-        print("\Creating notebook '{}' in stack 'Chrome Bookmarks'...\n".format(row["folder"]))
+        print("\nCreating notebook '{}' in stack 'Chrome Bookmarks'...\n".format(row["folder"]))
         notebook = Types.Notebook()
         notebook.name = row["folder"]
         notebook = noteStore.createNotebook(notebook)
@@ -66,7 +66,7 @@ for i, row in bm_df.iterrows():
 
 
     if "bookmarks" not in tag_name_list:
-        print("\Creating tag '{}'...\n".format("bookmarks"))
+        print("\nCreating tag '{}'...\n".format("bookmarks"))
         noteTag = Types.Tag()
         noteTag.name = "bookmarks"
         noteTag = noteStore.createTag(noteTag)
