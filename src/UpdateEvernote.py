@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 04:00:11 trottar"
+# Time-stamp: "2023-01-25 04:01:09 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -30,15 +30,17 @@ noteStore = client.get_note_store()
 print("-"*30)
 print("List of available notebooks...\n")
 notebooks = noteStore.listNotebooks()
+nb_name_list = []
 nb_list = []
 for nb in notebooks:
     print("\t-> ",nb.name)
-    nb_list.append(nb.name)
+    nb_list.append(nb)
+    nb_name_list.append(nb.name)
 print("-"*30)
 
 for i, row in bm_df.iterrows():
     print(row["folder"])
-    if row["folder"] not in nb_list:
+    if row["folder"] not in nb_name_list:
         notebook = Types.Notebook()
         notebook.name = row["folder"]
         notebook = noteStore.createNotebook(notebook)
