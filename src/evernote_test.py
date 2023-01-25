@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 03:14:57 trottar"
+# Time-stamp: "2023-01-25 03:22:20 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -63,7 +63,6 @@ If you want to specify a destination notebook, you’ll need assign the notebook
 Notebooks are just as simple to create as notes: make a new Types.Notebook object, give it a name, and call NoteStore.createNotebook:
 '''
 noteStore = client.get_note_store()
-
 notebook = Types.Notebook()
 notebook.name = "My Notebook"
 notebook = noteStore.createNotebook(notebook)
