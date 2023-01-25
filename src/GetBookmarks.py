@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 02:00:41 trottar"
+# Time-stamp: "2023-01-25 02:06:41 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -33,14 +33,14 @@ def import_bookmarks():
         if "Must Read" == folder.name:
             print("\nImporting data for bookmarks from {}...".format(folder.name))
             for i,url in enumerate(folder.urls):
-                bookmarkDict.update({"title" : url.name.lower()})
-                bookmarkDict.update({"url" : url.url})
-                bookmarkDict.update({"summary" : grabText(url.url)})
-                print("\t-> ",url.name.lower())
                 if len(folder.urls) > 1:
                     Tools.progressBar(i, len(folder.urls)-1,bar_length=25)
                 else:
                     Tools.progressBar(i, len(folder.urls),bar_length=25)
+                bookmarkDict.update({"title" : url.name.lower()})
+                bookmarkDict.update({"url" : url.url})
+                bookmarkDict.update({"summary" : grabText(url.url)})
+                print("\t-> ",url.name.lower())
                 #print(url, "\n\n","-"*70)
                 url = url.url
                 try:
