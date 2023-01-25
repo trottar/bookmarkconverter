@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 14:05:55 trottar"
+# Time-stamp: "2023-01-25 15:00:22 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -35,7 +35,6 @@ def import_bookmarks():
         if "Workout" == folder.name or "Must Read" == folder.name:
             print("\nImporting data for bookmarks from {}...".format(folder.name))
             for i,url in enumerate(folder.urls):
-                #ERROR=False
                 bookmarkDict.update({"folder" : folder.name})
                 bookmarkDict.update({"title" : url.name.lower()})
                 bookmarkDict.update({"url" : html.escape(url.url)})
