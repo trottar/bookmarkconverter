@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 16:03:10 trottar"
+# Time-stamp: "2023-01-25 16:04:02 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -24,7 +24,9 @@ def makeTag(noteStore, nameTag):
     for t in tags:
         tags_list.append(t.name)
     if ourTag.name in tags_list:
-        ourTag = [t for t in tags if ourTag.name == t]
+        for t in tags:
+            if ourTag.name == t:
+                ourTag = t
         #ourTag = noteStore.getTag(ourTag.name)
         return ourTag
     
