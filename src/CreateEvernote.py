@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 15:40:08 trottar"
+# Time-stamp: "2023-01-25 15:42:26 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -14,7 +14,7 @@ from evernote.api.client import EvernoteClient
 import evernote.edam.type.ttypes as Types
 import evernote.edam.error.ttypes as Errors
 
-def makeNote(authToken, noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
+def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
 
     print("\nAdding note to {}...\n".format(parentNotebook.name))
     
@@ -58,7 +58,7 @@ def makeNote(authToken, noteStore, noteTitle, noteBody, noteTag=None, parentNote
             ourTag = noteStore.getTag(ourTag.name)
             print("3~~~~~~~",ourTag)
             ourNote.tagGuids = [ourTag]
-        note = noteStore.createNote(authToken, ourNote)
+        note = noteStore.createNote(ourNote)
     except Errors.EDAMUserException as edue:
         ## Something was wrong with the note data
         ## See EDAMErrorCode enumeration for error code explanation
