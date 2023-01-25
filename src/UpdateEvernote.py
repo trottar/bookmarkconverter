@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 04:30:29 trottar"
+# Time-stamp: "2023-01-25 04:31:31 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -36,7 +36,7 @@ for nb in notebooks:
     print("\t-> ",nb.name)
     nb_list.append(nb)
     nb_name_list.append(nb.name)
-    notes = noteStore.getNoteContent(nb.guid)
+    notes = noteStore.getNoteContent(nb)
     print("~~~~~",notes)
 print("-"*30)
 
