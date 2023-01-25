@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 04:19:43 trottar"
+# Time-stamp: "2023-01-25 13:24:30 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -34,6 +34,7 @@ def import_bookmarks():
         if "Workout" == folder.name:
             print("\nImporting data for bookmarks from {}...".format(folder.name))
             for i,url in enumerate(folder.urls):
+                ERROR=False
                 bookmarkDict.update({"folder" : folder.name})
                 bookmarkDict.update({"title" : url.name.lower()})
                 bookmarkDict.update({"url" : url.url})
@@ -46,11 +47,13 @@ def import_bookmarks():
                         html = response.read()
                 except (urllib.error.HTTPError, urllib.error.URLError, ConnectionError, IncompleteRead) as e:
                     print("ERROR: Possible connection issue...")
+                    ERROR=True
                     continue
                 try:
                     soup = BeautifulSoup(html, "html.parser")
                 except:
                     print("ERROR: Check soup...")
+                    ERROR=True
                     continue
                 # Get text from site
                 '''
@@ -66,6 +69,8 @@ def import_bookmarks():
                     Tools.progressBar(i, len(folder.urls)-1,bar_length=25)
                 else:
                     Tools.progressBar(i, len(folder.urls),bar_length=25)
+                if ERROR != True:
+                    print("DONE")
             print("\n")
     print(df)
     print("-"*70)
