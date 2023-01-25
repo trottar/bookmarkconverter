@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 13:33:30 trottar"
+# Time-stamp: "2023-01-25 13:38:55 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -16,6 +16,7 @@ from urllib.parse import parse_qs, urlparse
 import urllib
 from bs4 import BeautifulSoup
 from http.client import IncompleteRead
+import html
 import time
 
 import Tools
@@ -37,34 +38,9 @@ def import_bookmarks():
                 #ERROR=False
                 bookmarkDict.update({"folder" : folder.name})
                 bookmarkDict.update({"title" : url.name.lower()})
-                bookmarkDict.update({"url" : url.url})
-                bookmarkDict.update({"summary" : grabText(url.url)})
+                bookmarkDict.update({"url" : html.escape(url.url)})
+                bookmarkDict.update({"summary" : grabText(html.escape(url.url))})
                 print("\t-> ",url.name.lower())
-                #print(url, "\n\n","-"*70)
-                '''
-                url = url.url
-                try:
-                    with urllib.request.urlopen(url) as response:
-                        html = response.read()
-                except (urllib.error.HTTPError, urllib.error.URLError, ConnectionError, IncompleteRead) as e:
-                    print("ERROR: Possible connection issue...")
-                    ERROR=True
-                    continue
-                try:
-                    soup = BeautifulSoup(html, "html.parser")
-                except:
-                    print("ERROR: Check soup...")
-                    ERROR=True
-                    continue
-                '''
-                # Get text from site
-                '''
-                text = ''
-                for para in soup.find_all("p"):
-                    text += para.get_text()
-                #print(' '.join([line.strip().lower() for line in text.splitlines()]),"\n\n")
-                bookmarkDict.update({"transcript" : ' '.join([line.strip().lower() for line in text.splitlines()])})
-                '''
                 bookmarkDict = {k : bookmarkDict[k] for k in sorted(bookmarkDict.keys())}
                 df = df.append(bookmarkDict,ignore_index=True)
                 if len(folder.urls) > 1:

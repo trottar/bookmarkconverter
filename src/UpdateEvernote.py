@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 13:36:43 trottar"
+# Time-stamp: "2023-01-25 13:37:54 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -12,7 +12,6 @@
 #
 from evernote.api.client import EvernoteClient
 import evernote.edam.type.ttypes as Types
-import html
 import os
 
 from GetBookmarks import import_bookmarks
@@ -65,6 +64,6 @@ for i, row in bm_df.iterrows():
     <br/>
     {1}
     <br/>
-    '''.format(html.escape(row["url"]),row["summary"].replace('\n', '<br/>'))
+    '''.format(row["url"],row["summary"].replace('\n', '<br/>'))
     makeNote(EVERNOTE_DEV, noteStore, row["title"], url_str, inp_nb)
 
