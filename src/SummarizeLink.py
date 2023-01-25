@@ -3,7 +3,7 @@
 #
 # Description: https://www.activestate.com/blog/how-to-do-text-summarization-with-python/
 # ================================================================
-# Time-stamp: "2023-01-25 01:48:22 trottar"
+# Time-stamp: "2023-01-25 01:50:55 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -25,7 +25,9 @@ article.parse()
 print(article.text)
 
 def summarize(text, per):
-    nlp = spacy.load('en_core_web_sm')
+    #nlp = spacy.load('en_core_web_sm')
+    #nlp = spacy.load('en_core_web_md')
+    nlp = spacy.load('en_core_web_lg')
     doc= nlp(text)
     tokens=[token.text for token in doc]
     word_frequencies={}
