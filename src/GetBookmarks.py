@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 04:11:32 trottar"
+# Time-stamp: "2023-01-25 04:13:18 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -45,10 +45,12 @@ def import_bookmarks():
                     with urllib.request.urlopen(url) as response:
                         html = response.read()
                 except (urllib.error.HTTPError, urllib.error.URLError, ConnectionError, IncompleteRead) as e:
+                    print("ERROR: Check html...")
                     continue
                 try:
                     soup = BeautifulSoup(html, "html.parser")
                 except:
+                    print("ERROR: Check soup...")
                     continue
                 # Get text from site
                 '''
