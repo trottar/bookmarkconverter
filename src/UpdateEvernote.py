@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 04:21:21 trottar"
+# Time-stamp: "2023-01-25 04:26:12 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -37,10 +37,6 @@ for nb in notebooks:
     nb_list.append(nb)
     nb_name_list.append(nb.name)
 print("-"*30)
-
-notes = noteStore.listNotes()
-for n in notes:
-    print("~~~~~",n)
 
 for i, row in bm_df.iterrows():
     if row["folder"] not in nb_name_list:
