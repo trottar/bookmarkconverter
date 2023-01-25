@@ -3,7 +3,7 @@
 #
 # Description: https://www.activestate.com/blog/how-to-do-text-summarization-with-python/
 # ================================================================
-# Time-stamp: "2023-01-25 01:46:49 trottar"
+# Time-stamp: "2023-01-25 01:47:32 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -55,4 +55,4 @@ def summarize(text, per):
     return summary
 
 
-print(summarize(article.text, 0.05))
+print(summarize(article.text, 0.10))
