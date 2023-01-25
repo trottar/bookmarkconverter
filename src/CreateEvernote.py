@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 16:30:18 trottar"
+# Time-stamp: "2023-01-25 16:32:42 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -25,13 +25,16 @@ def makeTag(noteStore, nameTag):
         print("!!!",t.name)
         tags_list.append(t.name)
     if ourTag.name in tags_list:
-
-        try:
-            print("\nAdding tag {}...\n".format(ourTag.name))
-            ourTag = noteStore.createTag(ourTag)
-            print("a",ourTag.guid)
-        except Errors.EDAMUserException as edue:
-            ourTag = noteStore.updateTag(ourTag)
+        for t in tags:
+            if ourTag.name == t:
+                ourTag = t
+                print("b",t.guid)
+                return t
+    
+    else:
+        print("\nAdding tag {}...\n".format(ourTag.name))
+        ourTag = noteStore.createTag(ourTag)
+        print("a",ourTag.guid)
         return ourTag
 
 def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
