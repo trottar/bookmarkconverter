@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 03:12:45 trottar"
+# Time-stamp: "2023-01-25 03:13:13 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -30,7 +30,6 @@ noteStore = client.get_note_store()
 print("-"*30)
 print("List of available notebooks...\n")
 notebooks = noteStore.listNotebooks()
-print("~"*10,notebooks.name)
 for nb in notebooks:
     print("\t-> ",nb.name)
     if nb.name == "Test":
