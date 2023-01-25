@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 03:27:44 trottar"
+# Time-stamp: "2023-01-25 03:34:30 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -40,6 +40,7 @@ for i, row in bm_df.iterrows():
         if row["folder"] in nb.name:
             inp_nb = nb.name
         else:
+            noteStore = client.get_note_store()
             inp_nb = Types.Notebook()
             inp_nb.name = row["folder"]
             inp_nb = noteStore.createNotebook(inp_nb)
