@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 04:34:49 trottar"
+# Time-stamp: "2023-01-25 04:38:12 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -36,8 +36,8 @@ for nb in notebooks:
     print("\t-> ",nb.name)
     nb_list.append(nb)
     nb_name_list.append(nb.name)
-    notes = noteStore.getNoteWithResultSpec(nb)
-    print("~~~~~",notes)
+    #notes = noteStore.getNoteWithResultSpec(nb) # trying to get note title so I can compare and not rewrite things
+    #print("~~~~~",notes)
 print("-"*30)
 
 for i, row in bm_df.iterrows():
