@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:35:51 trottar"
+# Time-stamp: "2023-01-25 17:36:32 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -49,7 +49,7 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
         
         if noteTag != None:
             ourTag = noteStore.getTag(ourTag)
-            ourNote.tagGuids = [ourTag]
+            ourNote.tagGuids = [ourTag.guid]
         note = noteStore.createNote(ourNote)
     except Errors.EDAMUserException as edue:
         ## Something was wrong with the note data
