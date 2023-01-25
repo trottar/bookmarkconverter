@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 13:44:43 trottar"
+# Time-stamp: "2023-01-25 13:56:07 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -32,7 +32,7 @@ def import_bookmarks():
 
     for folder in chrome_bookmarks.folders:
         #if "Must Read" == folder.name:
-        if "Workout" == folder.name:
+        if "Workout" == folder.name or "Must Read" == folder.name:
             print("\nImporting data for bookmarks from {}...".format(folder.name))
             for i,url in enumerate(folder.urls):
                 #ERROR=False
