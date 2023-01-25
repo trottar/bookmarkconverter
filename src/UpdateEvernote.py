@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 15:47:50 trottar"
+# Time-stamp: "2023-01-25 15:50:49 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -77,9 +77,7 @@ for i, row in bm_df.iterrows():
         <br/>
         '''.format(row["url"],row["summary"].replace('\n', '<br/>'))
 
-    tag = Types.Tag()
-    tag.name = "bookmark"
-    makeTag(noteStore, tag)
+    tag = makeTag(noteStore, "bookmarks")
     print("0~~~~~~~",tag)
     makeNote(noteStore, row["title"], url_str, noteTag=tag, parentNotebook=inp_nb)
     #makeNote(noteStore, row["title"], url_str, parentNotebook=inp_nb)
