@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 02:28:10 trottar"
+# Time-stamp: "2023-01-25 02:29:04 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -16,7 +16,6 @@ from urllib.parse import parse_qs, urlparse
 import urllib
 from bs4 import BeautifulSoup
 from http.client import IncompleteRead
-from tqdm import tqdm
 import time
 
 import Tools
@@ -33,7 +32,7 @@ def import_bookmarks():
     for folder in chrome_bookmarks.folders:
         if "Must Read" == folder.name:
             print("\nImporting data for bookmarks from {}...".format(folder.name))
-            for i,url in tqdm(enumerate(folder.urls), bar_format='{l_bar}'):
+            for i,url in enumerate(folder.urls):
                 bookmarkDict.update({"folder" : folder.name})
                 bookmarkDict.update({"title" : url.name.lower()})
                 bookmarkDict.update({"url" : url.url})
