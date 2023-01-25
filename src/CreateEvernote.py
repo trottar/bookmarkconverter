@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 15:32:16 trottar"
+# Time-stamp: "2023-01-25 15:34:14 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -52,6 +52,7 @@ def makeNote(authToken, noteStore, noteTitle, noteBody, noteTag=None, parentNote
 
     ## Attempt to create note in Evernote account
     try:
+        print("1~~~~~~~",ourTag.guid)
         if noteTag != None:
             ourTag = noteStore.getTag(ourTag.name)
             print("~~~~~~~",ourTag.guid)
