@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:39:08 trottar"
+# Time-stamp: "2023-01-25 17:48:46 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -16,7 +16,7 @@ import evernote.edam.error.ttypes as Errors
 
 def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
 
-    print("\nAdding note to {}...\n".format(parentNotebook.name))
+    print("\nAdding note to notebook '{}'...\n".format(parentNotebook.name))
     
     nBody = '<?xml version="1.0" encoding="UTF-8"?>'
     nBody += '<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">'
