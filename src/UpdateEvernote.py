@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 01:59:45 trottar"
+# Time-stamp: "2023-01-25 02:23:11 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -41,10 +41,12 @@ for i, row in bm_df.iterrows():
     url_str = \
     '''
     <a href="{0}">{0}</a>
-    
+    <br>
     Quick Summary:
-    ---
+    <br>
+    <hr class="solid">
+    <br>
     {1}
-    
+    <br>
     '''.format(row["url"],row["summary"])
     makeNote(EVERNOTE_DEV, noteStore, row["title"], url_str, inp_nb)
