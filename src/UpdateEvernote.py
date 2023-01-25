@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 02:58:06 trottar"
+# Time-stamp: "2023-01-25 03:03:25 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -49,5 +49,5 @@ for i, row in bm_df.iterrows():
     <br/>
     {1}
     <br/>
-    '''.format(row["url"],row["summary"].replace('\n', '<br\>'))
+    '''.format(row["url"],row["summary"].replace('\n', '<br/>'))
     makeNote(EVERNOTE_DEV, noteStore, row["title"], url_str, inp_nb)
