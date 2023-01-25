@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 03:59:20 trottar"
+# Time-stamp: "2023-01-25 04:00:11 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -43,6 +43,7 @@ for i, row in bm_df.iterrows():
         notebook.name = row["folder"]
         notebook = noteStore.createNotebook(notebook)
     inp_nb = nb_list[nb_list.index(row["folder"])]
+    print(inp_nb)
     url_str = \
     '''
     <a href="{0}">{0}</a>
