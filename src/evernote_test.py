@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 03:13:47 trottar"
+# Time-stamp: "2023-01-25 03:14:22 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -31,6 +31,6 @@ Just like with UserStore, creating an instance of NoteStore is as easy as callin
 '''
 noteStore = client.get_note_store()
 notebooks = noteStore.listNotebooks()
-print("~"*10,notebooks.name)
+print("~"*10,notebooks)
 for n in notebooks:
     print(n.name)
