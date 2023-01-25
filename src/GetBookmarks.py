@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 01:33:55 trottar"
+# Time-stamp: "2023-01-25 01:41:11 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -15,7 +15,6 @@ import chrome_bookmarks
 from urllib.parse import parse_qs, urlparse
 import urllib
 from bs4 import BeautifulSoup
-from PyQt5.QtWidgets import QProgressBar,QApplication
 from http.client import IncompleteRead
 import time
 
