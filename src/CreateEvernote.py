@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:33:47 trottar"
+# Time-stamp: "2023-01-25 17:35:51 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -48,7 +48,7 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
     try:
         
         if noteTag != None:
-            ourTag = noteStore.getTag(ourTag.name)
+            ourTag = noteStore.getTag(ourTag)
             ourNote.tagGuids = [ourTag]
         note = noteStore.createNote(ourNote)
     except Errors.EDAMUserException as edue:
