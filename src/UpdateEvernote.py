@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 04:58:56 trottar"
+# Time-stamp: "2023-01-25 05:01:19 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -39,13 +39,13 @@ for nb in notebooks:
 print("-"*30)
 
 for i, row in bm_df.iterrows():
-    if row["folder"]+"a" not in nb_name_list:
+    if row["folder"] not in nb_name_list:
         notebook = Types.Notebook()
-        notebook.name = row["folder"]+"a"
+        notebook.name = row["folder"]
         notebook = noteStore.createNotebook(notebook)
         nb_list.append(notebook)
         nb_name_list.append(notebook.name)
-    inp_nb = nb_list[nb_name_list.index(row["folder"]+"a")]
+    inp_nb = nb_list[nb_name_list.index(row["folder"])]
     url_str = \
     '''
     <a href="{0}">{0}</a>
