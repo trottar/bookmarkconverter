@@ -3,7 +3,7 @@
 #
 # Description: https://www.activestate.com/blog/how-to-do-text-summarization-with-python/
 # ================================================================
-# Time-stamp: "2023-01-25 02:02:59 trottar"
+# Time-stamp: "2023-01-25 02:05:55 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -21,12 +21,14 @@ url="https://www.symmetrymagazine.org/article/a-universe-is-born"
 
 def grabText(url):
 
-    print("~~~",url)
-    article = Article(url)
-    article.download()
-    article.parse()
-
-    return summarize(article.text, 0.10)
+    print(" "*4,url)
+    try:
+        article = Article(url)
+        article.download()
+        article.parse()
+        return summarize(article.text, 0.10)
+    except article.ArticleException as arex:
+        return ""
     
 
 def summarize(text, per):
