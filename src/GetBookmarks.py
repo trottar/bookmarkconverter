@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 03:21:23 trottar"
+# Time-stamp: "2023-01-25 03:42:48 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -30,7 +30,8 @@ def import_bookmarks():
     df = pd.DataFrame()
 
     for folder in chrome_bookmarks.folders:
-        if "Must Read" == folder.name:
+        #if "Must Read" == folder.name:
+        if "Workout" == folder.name:
             print("\nImporting data for bookmarks from {}...".format(folder.name))
             for i,url in enumerate(folder.urls):
                 bookmarkDict.update({"folder" : folder.name})
