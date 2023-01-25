@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 14:44:48 trottar"
+# Time-stamp: "2023-01-25 14:53:53 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -79,10 +79,5 @@ for i, row in bm_df.iterrows():
     tags = noteStore.listTags()
     tag = Types.Tag()
     tag.name = "bookmark"
-    tags_list = []
-    for t in tags:
-        tags_list.append(t.name)
-    if tag.name not in tags_list:
-        tag = noteStore.createTag(tag)
     makeNote(EVERNOTE_DEV, noteStore, row["title"], url_str, tag, inp_nb)
 
