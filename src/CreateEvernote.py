@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:10:47 trottar"
+# Time-stamp: "2023-01-25 17:12:31 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -20,7 +20,7 @@ def makeTag(noteStore, nameTag):
     
     tags = noteStore.listTags()
     tags_list = []
-    tags__name_list = []
+    tags_name_list = []
     for t in tags:
         tags_list.append(t)
         tags_name_list.append(t.name)
@@ -30,7 +30,7 @@ def makeTag(noteStore, nameTag):
         ourTag.name = nameTag
         ourTag = noteStore.createTag(ourTag)
         print("a",ourTag.guid)
-    ourTag = ourTag[nameTag.index(nameTag)]       
+    ourTag = ourTag[tags_name_list.index(nameTag)]       
     return ourTag
 
 def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
