@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 15:45:27 trottar"
+# Time-stamp: "2023-01-25 15:47:50 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -15,7 +15,7 @@ import evernote.edam.type.ttypes as Types
 import os
 
 from GetBookmarks import import_bookmarks
-from CreateEvernote import makeNote
+from CreateEvernote import makeNote, makeTag
 
 bm_df = import_bookmarks()
 
@@ -79,12 +79,7 @@ for i, row in bm_df.iterrows():
 
     tag = Types.Tag()
     tag.name = "bookmark"
-    tags = noteStore.listTags()
-    tags_list = []
-    for t in tags:
-        tags_list.append(t.name)
-    if tag.name not in tags_list:
-        tag = noteStore.createTag(tag)
+    makeTag(noteStore, tag)
     print("0~~~~~~~",tag)
     makeNote(noteStore, row["title"], url_str, noteTag=tag, parentNotebook=inp_nb)
     #makeNote(noteStore, row["title"], url_str, parentNotebook=inp_nb)
