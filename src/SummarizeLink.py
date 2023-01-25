@@ -3,7 +3,7 @@
 #
 # Description: https://www.activestate.com/blog/how-to-do-text-summarization-with-python/
 # ================================================================
-# Time-stamp: "2023-01-25 02:19:15 trottar"
+# Time-stamp: "2023-01-25 02:32:10 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -26,7 +26,7 @@ def grabText(url):
         article = Article(url)
         article.download()
         article.parse()
-        return summarize(article.text, 0.10)
+        return summarize(article.text, 0.05)
     #except article.ArticleException as arex:
     except:
         print("ERROR: Likely 505...")
