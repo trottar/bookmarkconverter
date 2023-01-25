@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:26:15 trottar"
+# Time-stamp: "2023-01-25 17:27:22 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -42,7 +42,14 @@ for nb in notebooks:
     # Iterate through the list of notes and print the title of each note
     #for note in notes_list.notes:
     #    print(note.title)
-
+    
+tags = noteStore.listTags()
+tags_list = []
+tags_name_list = []
+for t in tags:
+    tags_list.append(t)
+    tags_name_list.append(t.name)
+    
 print("-"*30)
 
 for i, row in bm_df.iterrows():
@@ -57,12 +64,7 @@ for i, row in bm_df.iterrows():
     inp_nb.stack = "Chrome Bookmarks"
     noteStore.updateNotebook(inp_nb)
 
-    tags = noteStore.listTags()
-    tags_list = []
-    tags_name_list = []
-    for t in tags:
-        tags_list.append(t)
-        tags_name_list.append(t.name)
+
     if "bookmarks" not in tags_list:
         print("\nAdding tag {}...\n".format("bookmarks"))
         noteTag = Types.Tag()
