@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 03:42:48 trottar"
+# Time-stamp: "2023-01-25 04:11:32 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -65,5 +65,6 @@ def import_bookmarks():
                 else:
                     Tools.progressBar(i, len(folder.urls),bar_length=25)
             print("\n")
+    print(df)
     print("-"*70)
     return df
