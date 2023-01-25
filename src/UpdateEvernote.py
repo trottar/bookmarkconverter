@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 03:45:30 trottar"
+# Time-stamp: "2023-01-25 03:56:13 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -30,20 +30,19 @@ noteStore = client.get_note_store()
 print("-"*30)
 print("List of available notebooks...\n")
 notebooks = noteStore.listNotebooks()
+nb_list = []
 for nb in notebooks:
     print("\t-> ",nb.name)
+    nb_list.append(nb.name)
 print("-"*30)
-
 
 for i, row in bm_df.iterrows():
     print(row["folder"])
-    for nb in notebooks:
-        if row["folder"] == nb.name:
-            inp_nb = nb.name
-        else:
-            inp_nb = Types.Notebook()
-            inp_nb.name = row["folder"]
-            inp_nb = noteStore.createNotebook(inp_nb)
+    if row["folder"] not in nb_list:
+        notebook = Types.Notebook()
+        notebook.name = row["folder"]
+        notebook = noteStore.createNotebook(notebook)
+    inp_nb = row["folder"]
     url_str = \
     '''
     <a href="{0}">{0}</a>
