@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 13:52:52 trottar"
+# Time-stamp: "2023-01-25 13:54:53 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -53,18 +53,26 @@ for i, row in bm_df.iterrows():
         nb_list.append(notebook)
         nb_name_list.append(notebook.name)
     inp_nb = nb_list[nb_name_list.index(row["folder"])]
-    url_str = \
-    '''
-    <a href="{0}">{0}</a>
-    <br/>
-    <br/>
-    <br/>
-    <span style="font-weight:bold;color:black;">Quick Summary:</span>
-    <hr/>
-    <br/>
-    <br/>
-    {1}
-    <br/>
-    '''.format(row["url"],row["summary"].replace('\n', '<br/>'))
+    if row["summary"] == "":
+        url_str = \
+        '''
+        <a href="{0}">{0}</a>
+        <br/>
+        '''.format(row["url"])
+    else:
+        url_str = \
+        '''
+        <a href="{0}">{0}</a>
+        <br/>
+        <br/>
+        <br/>
+        <span style="font-weight:bold;color:black;">Quick Summary:</span>
+        <hr/>
+        <br/>
+        <br/>
+        {1}
+        <br/>
+        '''.format(row["url"],row["summary"].replace('\n', '<br/>'))
+        
     makeNote(EVERNOTE_DEV, noteStore, row["title"], url_str, inp_nb)
 
