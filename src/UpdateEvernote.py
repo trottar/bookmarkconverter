@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 18:01:06 trottar"
+# Time-stamp: "2023-01-25 18:05:39 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -25,7 +25,7 @@ userStore = client.get_user_store()
 user = userStore.getUser()
 print("\nRunning for user '{}'...\n\n".format(user.username))
 
-noteStore = client.get_note_store()
+noteStore = client.get_note_store()    
 
 print("-"*30)
 print("List of available notebooks...\n")
@@ -37,15 +37,14 @@ for nb in notebooks:
     nb_list.append(nb)
     nb_name_list.append(nb.name)
 
-print("List of available tags...\n")
+print("\nList of available tags...\n")
 tags = noteStore.listTags()
 tag_name_list = []
 tag_list = []
 for t in tags:
     print("\t-> ",t.name)
     tag_list.append(t)
-    tag_name_list.append(t.name)
-    
+    tag_name_list.append(t.name)    
 print("-"*30)
 
 for i, row in bm_df.iterrows():
