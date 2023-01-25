@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 13:38:55 trottar"
+# Time-stamp: "2023-01-25 13:40:42 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -40,7 +40,7 @@ def import_bookmarks():
                 bookmarkDict.update({"title" : url.name.lower()})
                 bookmarkDict.update({"url" : html.escape(url.url)})
                 bookmarkDict.update({"summary" : grabText(html.escape(url.url))})
-                print("\t-> ",url.name.lower())
+                #print("\t-> ",url.name.lower())
                 bookmarkDict = {k : bookmarkDict[k] for k in sorted(bookmarkDict.keys())}
                 df = df.append(bookmarkDict,ignore_index=True)
                 if len(folder.urls) > 1:
@@ -49,6 +49,7 @@ def import_bookmarks():
                     Tools.progressBar(i, len(folder.urls),bar_length=25)
                 print("")
             print("\n")
+    print("-"*70)
     print(df)
     print("-"*70)
     return df

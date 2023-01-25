@@ -3,7 +3,7 @@
 #
 # Description: https://www.activestate.com/blog/how-to-do-text-summarization-with-python/
 # ================================================================
-# Time-stamp: "2023-01-25 02:32:10 trottar"
+# Time-stamp: "2023-01-25 13:43:12 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -21,7 +21,7 @@ url="https://www.symmetrymagazine.org/article/a-universe-is-born"
 
 def grabText(url):
 
-    print(" "*4,url)
+    #print(" "*4,url)
     try:
         article = Article(url)
         article.download()
