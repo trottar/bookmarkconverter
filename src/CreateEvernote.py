@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 15:15:32 trottar"
+# Time-stamp: "2023-01-25 15:16:19 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -52,7 +52,7 @@ def makeNote(authToken, noteStore, noteTitle, noteBody, noteTag=None, parentNote
     ## Attempt to create note in Evernote account
     try:
         if noteTag != None:
-            ourTag = note_store.getTagByName(noteTag.name)
+            ourTag = noteStore.getTagByName(noteTag.name)
             ourNote.tagGuids = [ourTag.guid]
         note = noteStore.createNote(authToken, ourNote)
     except Errors.EDAMUserException as edue:
