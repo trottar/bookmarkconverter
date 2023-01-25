@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 14:14:27 trottar"
+# Time-stamp: "2023-01-25 14:29:12 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -46,8 +46,8 @@ def makeNote(authToken, noteStore, noteTitle, noteBody, noteTag=None, parentNote
 
     ## Attempt to create note in Evernote account
     try:
+        note.tagGuids = [ourTag.guid]
         note = noteStore.createNote(authToken, ourNote)
-        tag = tagStore.createTag(authToken, ourTag)
     except Errors.EDAMUserException as edue:
         ## Something was wrong with the note data
         ## See EDAMErrorCode enumeration for error code explanation
