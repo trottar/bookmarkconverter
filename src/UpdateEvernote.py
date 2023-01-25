@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 04:57:23 trottar"
+# Time-stamp: "2023-01-25 04:58:56 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -39,7 +39,7 @@ for nb in notebooks:
 print("-"*30)
 
 for i, row in bm_df.iterrows():
-    if row["folder"] not in nb_name_list:
+    if row["folder"]+"a" not in nb_name_list:
         notebook = Types.Notebook()
         notebook.name = row["folder"]+"a"
         notebook = noteStore.createNotebook(notebook)
