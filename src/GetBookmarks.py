@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 04:15:10 trottar"
+# Time-stamp: "2023-01-25 04:16:37 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -33,6 +33,7 @@ def import_bookmarks():
         #if "Must Read" == folder.name:
         if "Workout" == folder.name:
             print("\nImporting data for bookmarks from {}...".format(folder.name))
+            print(folder.urls)
             for i,url in enumerate(folder.urls):
                 bookmarkDict.update({"folder" : folder.name})
                 bookmarkDict.update({"title" : url.name.lower()})
@@ -45,7 +46,7 @@ def import_bookmarks():
                     with urllib.request.urlopen(url) as response:
                         html = response.read()
                 except (urllib.error.HTTPError, urllib.error.URLError, ConnectionError, IncompleteRead) as e:
-                    print("ERROR: Check html...")
+                    print("ERROR: Possible connection issue...")
                     continue
                 try:
                     soup = BeautifulSoup(html, "html.parser")
