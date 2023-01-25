@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:25:27 trottar"
+# Time-stamp: "2023-01-25 17:26:15 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -63,15 +63,15 @@ for i, row in bm_df.iterrows():
     for t in tags:
         tags_list.append(t)
         tags_name_list.append(t.name)
-    if nameTag not in tags_list:
-        print("\nAdding tag {}...\n".format(nameTag))
+    if "bookmarks" not in tags_list:
+        print("\nAdding tag {}...\n".format("bookmarks"))
         noteTag = Types.Tag()
-        noteTag.name = nameTag
+        noteTag.name = "bookmarks"
         noteTag = noteStore.createTag(noteTag)
         tags_list.append(noteTag)
         tags_name_list.append(noteTag.name)
         print("a",noteTag.guid)
-    tag = tags_list[tags_name_list.index(nameTag)]
+    tag = tags_list[tags_name_list.index("bookmarks")]
     
     if row["summary"] == "":
         url_str = \
