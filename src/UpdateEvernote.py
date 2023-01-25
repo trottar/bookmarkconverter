@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 17:33:26 trottar"
+# Time-stamp: "2023-01-25 17:34:48 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -15,7 +15,7 @@ import evernote.edam.type.ttypes as Types
 import os
 
 from GetBookmarks import import_bookmarks
-from CreateEvernote import makeNote, makeTag
+from CreateEvernote import makeNote
 
 bm_df = import_bookmarks()
 
