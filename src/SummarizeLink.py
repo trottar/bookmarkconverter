@@ -3,7 +3,7 @@
 #
 # Description: https://www.activestate.com/blog/how-to-do-text-summarization-with-python/
 # ================================================================
-# Time-stamp: "2023-01-25 01:53:28 trottar"
+# Time-stamp: "2023-01-25 01:55:50 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -19,10 +19,14 @@ import os
 
 url="https://www.symmetrymagazine.org/article/a-universe-is-born"
 
-article = Article(url)
-article.download()
-article.parse()
-print(article.text)
+def grabText(url):
+    
+    article = Article(url)
+    article.download()
+    article.parse()
+
+    return summarize(article.text, 0.10)
+    
 
 def summarize(text, per):
     #nlp = spacy.load('en_core_web_sm')
@@ -55,5 +59,3 @@ def summarize(text, per):
     final_summary=[word.text for word in summary]
     summary=''.join(final_summary)
     return summary
-
-print("\n\n\n",summarize(article.text, 0.10))

@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 01:41:49 trottar"
+# Time-stamp: "2023-01-25 01:58:00 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -19,6 +19,8 @@ from http.client import IncompleteRead
 import time
 
 import Tools
+
+from SummarizeLink import grabText
 
 pd.set_option('display.max_colwidth', None)
         
@@ -49,6 +51,8 @@ def import_bookmarks():
                     soup = BeautifulSoup(html, "html.parser")
                 except:
                     continue
+                # Text summary
+                bookmarkDict.update({"summary" : grabText(url.url)})
                 # Get text from site
                 '''
                 text = ''
@@ -56,8 +60,8 @@ def import_bookmarks():
                     text += para.get_text()
                 #print(' '.join([line.strip().lower() for line in text.splitlines()]),"\n\n")
                 bookmarkDict.update({"transcript" : ' '.join([line.strip().lower() for line in text.splitlines()])})
-                bookmarkDict = {k : bookmarkDict[k] for k in sorted(bookmarkDict.keys())}
                 '''
+                bookmarkDict = {k : bookmarkDict[k] for k in sorted(bookmarkDict.keys())}
                 df = df.append(bookmarkDict,ignore_index=True)
             print("\n")
     print("-"*70)
