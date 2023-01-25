@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 01:41:11 trottar"
+# Time-stamp: "2023-01-25 01:41:49 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -34,7 +34,6 @@ def import_bookmarks():
                 bookmarkDict.update({"title" : url.name.lower()})
                 bookmarkDict.update({"url" : url.url})
                 print("\t-> ",url.name.lower())
-                QApplication.processEvents()
                 if len(folder.urls) > 1:
                     Tools.progressBar(i, len(folder.urls)-1,bar_length=25)
                 else:
