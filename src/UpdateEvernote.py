@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 22:47:38 trottar"
+# Time-stamp: "2023-01-25 23:16:21 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -91,7 +91,7 @@ for i, row in bm_df.iterrows():
         <br/>
         <hr/>
         <br/>
-        '''.format(row["url"],row["summary"].replace('\n', '<br/>'))
+        '''.format(row["url"],row["summary"].replace('\n', ' <br/> '))
 
     makeNote(noteStore, row["title"], url_str, noteTag=tag, parentNotebook=inp_nb)
     #makeNote(noteStore, row["title"], url_str, parentNotebook=inp_nb)
