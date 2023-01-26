@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 23:31:03 trottar"
+# Time-stamp: "2023-01-26 15:08:20 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -29,15 +29,17 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
     ## parentNotebook is optional; if omitted, default notebook is used
     if parentNotebook != None:
         ourNote.notebookGuid = parentNotebook.guid
-
+        
         NoteExists = False
-        note_filter = NoteFilter(notebookGuid=ourNote.notebookGuid)
-        search_result = noteStore.findNotes(note_filter, 0, 100000)
-        for note in search_result.notes:
-            if ourNote.title == note.title:
-                #print("{} -> Note already exists".format(ourNote.title))
-                NoteExists = True
-    
+        try:            
+            note_filter = NoteFilter(notebookGuid=ourNote.notebookGuid)
+            search_result = noteStore.findNotes(note_filter, 0, 100000)
+            for note in search_result.notes:
+                if ourNote.title == note.title:
+                    #print("{} -> Note already exists".format(ourNote.title))
+                    NoteExists = True
+        except:
+            NoteExists = False
     if noteTag != None:
         ourTag = noteTag
 
