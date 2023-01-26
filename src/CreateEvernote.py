@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 19:24:17 trottar"
+# Time-stamp: "2023-01-25 19:25:42 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -45,8 +45,9 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
     ## parentNotebook is optional; if omitted, default notebook is used
     if parentNotebook != None:
         ourNote.notebookGuid = parentNotebook.guid
-        
-        note_filter = NoteFilter(notebookGuid=ourNote.notebookGuid)
+
+        #note_filter = NoteFilter(notebookGuid=ourNote.notebookGuid)
+        note_filter = NoteFilter(words='title="{}"'.format(ourNote.title), notebookGuid=ourNote.notebookGuid)
         #note_filter = NoteList(searchedWords=ourNote.title)
         print(note_filter)
         #note_filter.words = "title:"+ourNote.title
