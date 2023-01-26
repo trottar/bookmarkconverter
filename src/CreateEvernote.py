@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 20:07:37 trottar"
+# Time-stamp: "2023-01-25 20:11:49 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -54,6 +54,9 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
         |{4}
 
         '''.format("_"*len(noteTitle),noteTitle,"-"*len(noteTitle),noteBody,"_"*len(noteTitle)))
+    else:
+
+        print("Bookmark '{}' is already in notebook '{}'...".format(noteTitle,parentNotebook.name))
 
     ## Attempt to create note in Evernote account
     try:
