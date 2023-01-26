@@ -3,14 +3,13 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 22:54:07 trottar"
+# Time-stamp: "2023-01-25 22:56:40 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
 #
 # Copyright (c) trottar
 #
-from evernote.api.client import EvernoteClient
 from evernote.edam.notestore.ttypes import NoteFilter
 import pandas as pd
 import chrome_bookmarks
@@ -44,7 +43,9 @@ def import_bookmarks(noteStore, notebooks):
                     note_filter = NoteFilter(notebookGuid=nb.guid)
                     search_result = noteStore.findNotes(note_filter, 0, 100000)
                     for note in search_result.notes:
-                        if folder.name == note.title:
+                        print(url.name.lower())
+                        if url.name.lower() == note.title:
+                            #print("{} -> Note already exists".format(url.name.lower()))
                             NoteExists = True
                 if NoteExists == False:
                     bookmarkDict.update({"folder" : folder.name})
