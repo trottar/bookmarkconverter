@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 20:55:02 trottar"
+# Time-stamp: "2023-01-25 22:47:38 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -16,8 +16,6 @@ import os
 
 from GetBookmarks import import_bookmarks
 from CreateEvernote import makeNote
-
-bm_df = import_bookmarks()
 
 EVERNOTE_DEV = os.getenv('EVERNOTE_DEV')
 client = EvernoteClient(token=str(EVERNOTE_DEV))
@@ -46,6 +44,8 @@ for t in tags:
     tag_list.append(t)
     tag_name_list.append(t.name)    
 print("-"*30)
+
+bm_df = import_bookmarks(noteStore, notebooks)
 
 for i, row in bm_df.iterrows():
     if row["folder"] not in nb_name_list:
