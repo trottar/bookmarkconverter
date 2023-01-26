@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-26 15:08:20 trottar"
+# Time-stamp: "2023-01-26 18:07:46 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -13,6 +13,7 @@
 import evernote.edam.type.ttypes as Types
 import evernote.edam.error.ttypes as Errors
 from evernote.edam.notestore.ttypes import NoteFilter
+import socket
 
 
 def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
@@ -79,6 +80,8 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
         ## Parent Notebook GUID doesn't correspond to an actual notebook
         print("EDAMNotFoundException: Invalid parent notebook GUID")
         return None
-
+    except socket.gaierror as sgai:
+        print("socket.gaierror: Name or service not known")
+        return None
     ## Return created note object
     return note
