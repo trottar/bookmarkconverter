@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 19:14:10 trottar"
+# Time-stamp: "2023-01-25 19:15:00 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -13,7 +13,7 @@
 from evernote.api.client import EvernoteClient
 import evernote.edam.type.ttypes as Types
 import evernote.edam.error.ttypes as Errors
-from evernote.edam.notestore.ttypes import NoteFilter
+from evernote.edam.notestore.ttypes import NoteFilter, NoteList
 
 
 def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
