@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 20:06:28 trottar"
+# Time-stamp: "2023-01-25 20:07:37 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -17,8 +17,6 @@ from evernote.edam.notestore.ttypes import NoteFilter, NoteList
 
 
 def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
-
-    print("\nAdding note to notebook '{}'...\n".format(parentNotebook.name))
     
     nBody = '<?xml version="1.0" encoding="UTF-8"?>'
     nBody += '<!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd">'
@@ -44,7 +42,9 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
     if noteTag != None:
         ourTag = noteTag
 
-    if NoteExists == False:        
+    if NoteExists == False:
+        print("\nAdding note to notebook '{}'...\n".format(parentNotebook.name))
+        
         print('''
 
          {0}
