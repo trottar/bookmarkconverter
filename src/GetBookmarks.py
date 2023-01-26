@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 23:04:29 trottar"
+# Time-stamp: "2023-01-25 23:05:19 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -40,8 +40,7 @@ def import_bookmarks(noteStore, notebooks):
                 nb_list = []
                 for nb in notebooks:
                     NoteExists = False
-                    print(nb," == ",folder.name)
-                    if nb == folder.name:
+                    if nb.name == folder.name:
                         note_filter = NoteFilter(notebookGuid=nb.guid)
                         search_result = noteStore.findNotes(note_filter, 0, 100000)
                         for note in search_result.notes:
