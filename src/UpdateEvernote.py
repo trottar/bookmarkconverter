@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 23:16:21 trottar"
+# Time-stamp: "2023-01-25 23:18:05 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -78,7 +78,9 @@ for i, row in bm_df.iterrows():
     else:
         url_str = \
         '''
-        <a href="{0}">{0}</a>
+        <a href="{0}">
+        {0}
+        </a>
         <br/>
         <br/>
         <br/>
