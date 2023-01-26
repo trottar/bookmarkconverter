@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 23:21:55 trottar"
+# Time-stamp: "2023-01-25 23:23:43 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -45,7 +45,7 @@ def import_bookmarks(noteStore, notebooks):
                         search_result = noteStore.findNotes(note_filter, 0, 100000)
                         for note in search_result.notes:
                             if url.name.lower() == note.title:
-                                print("[{}] -> Note already exists".format(url.name.lower()))
+                                print("{} -> Note already exists".format(url.name.lower()))
                                 NoteExists = True
                                 break
                     if NoteExists == True:
