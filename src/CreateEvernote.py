@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 19:27:40 trottar"
+# Time-stamp: "2023-01-25 19:29:53 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -57,7 +57,8 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
         print(note_filter.words)
         #print(noteStore.findNoteCounts(note_filter, False).notebookCounts)
         search_result = noteStore.findNotes(note_filter, 0, 100000)
-        print(search_result.notes)
+        for note in search_result.notes:
+            print(note.title)
         print(ourNote.notebookGuid)
  
         if len(search_result.notes) == 0:
