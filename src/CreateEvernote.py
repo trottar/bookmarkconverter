@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 19:41:11 trottar"
+# Time-stamp: "2023-01-25 19:44:25 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -46,6 +46,7 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
     if parentNotebook != None:
         ourNote.notebookGuid = parentNotebook.guid
 
+        NoteExists = False
         note_filter = NoteFilter(notebookGuid=ourNote.notebookGuid)
         #note_filter = NoteFilter(words='title="{}"'.format(ourNote.title), notebookGuid=ourNote.notebookGuid)
         #note_filter = NoteList(searchedWords=ourNote.title)
@@ -62,6 +63,7 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
             print("\t",note.title)
             if ourNote.title == note.title:
                 print("{} -> Note already exists".format(ourNote.title))
+                NoteExists = True
         print(ourNote.notebookGuid)
 
     ## Attempt to create note in Evernote account
@@ -70,7 +72,10 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
         if noteTag != None:
             ourTag = noteStore.getTag(ourTag.guid)
             ourNote.tagGuids = [ourTag.guid]
-        note = noteStore.createNote(ourNote)
+        if NoteExists == False:
+            note = noteStore.createNote(ourNote)
+        else:
+            return None
     except Errors.EDAMUserException as edue:
         ## Something was wrong with the note data
         ## See EDAMErrorCode enumeration for error code explanation
