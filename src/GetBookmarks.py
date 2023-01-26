@@ -3,13 +3,15 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 22:52:19 trottar"
+# Time-stamp: "2023-01-25 22:54:07 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
 #
 # Copyright (c) trottar
 #
+from evernote.api.client import EvernoteClient
+from evernote.edam.notestore.ttypes import NoteFilter
 import pandas as pd
 import chrome_bookmarks
 from urllib.parse import parse_qs, urlparse
