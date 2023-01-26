@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 23:16:49 trottar"
+# Time-stamp: "2023-01-25 23:18:45 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -55,7 +55,7 @@ def import_bookmarks(noteStore, notebooks):
                     bookmarkDict.update({"title" : url.name.lower()})
                     bookmarkDict.update({"url" : html.escape(url.url)})
                     bookmarkDict.update({"summary" : grabText(html.escape(url.url))})
-                    #print("\t-> ",url.name.lower())
+                    print("\t-> ",url.name.lower())
                     bookmarkDict = {k : bookmarkDict[k] for k in sorted(bookmarkDict.keys())}
                     df = df.append(bookmarkDict,ignore_index=True)
                     if len(folder.urls) > 1:
