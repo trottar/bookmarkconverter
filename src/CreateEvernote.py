@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 20:04:36 trottar"
+# Time-stamp: "2023-01-25 20:06:28 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -29,19 +29,6 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
     ourNote.title = noteTitle
     ourNote.content = nBody
 
-    if noteTag != None:
-        ourTag = noteTag
-    
-    print('''
-
-     {0}
-    |{1}
-    |{2}
-    |{3}
-    |{4}
-
-    '''.format("_"*len(noteTitle),noteTitle,"-"*len(noteTitle),noteBody,"_"*len(noteTitle)))
-
     ## parentNotebook is optional; if omitted, default notebook is used
     if parentNotebook != None:
         ourNote.notebookGuid = parentNotebook.guid
@@ -53,6 +40,20 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
             if ourNote.title == note.title:
                 #print("{} -> Note already exists".format(ourNote.title))
                 NoteExists = True
+    
+    if noteTag != None:
+        ourTag = noteTag
+
+    if NoteExists == False:        
+        print('''
+
+         {0}
+        |{1}
+        |{2}
+        |{3}
+        |{4}
+
+        '''.format("_"*len(noteTitle),noteTitle,"-"*len(noteTitle),noteBody,"_"*len(noteTitle)))
 
     ## Attempt to create note in Evernote account
     try:
