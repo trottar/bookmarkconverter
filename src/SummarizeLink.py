@@ -3,7 +3,7 @@
 #
 # Description: https://www.activestate.com/blog/how-to-do-text-summarization-with-python/
 # ================================================================
-# Time-stamp: "2023-01-27 14:25:44 trottar"
+# Time-stamp: "2023-01-27 16:43:29 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -11,6 +11,7 @@
 # Copyright (c) trottar
 #
 from newspaper import Article
+import newspaper
 import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
