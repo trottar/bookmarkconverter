@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-27 13:25:05 trottar"
+# Time-stamp: "2023-01-27 16:00:16 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -63,7 +63,15 @@ for i, row in bm_df.iterrows():
     except socket.gaierror as sgai:
         print("socket.gaierror: ", sgai)
         continue
-
+    except Errors.EDAMUserException as edue:
+        print("EDAMUserException:", edue)
+        continue
+    except Errors.EDAMSystemException as edue:
+        print("EDAMSystemException:", edue)
+        continue
+    except Errors.EDAMNotFoundException as ednfe:
+        print("EDAMNotFoundException: ", ednfe)
+        continue
 
     if "bookmarks" not in tag_name_list:
         print("\nCreating tag '{}'...\n".format("bookmarks"))
