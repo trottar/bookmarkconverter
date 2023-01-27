@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-26 12:02:08 trottar"
+# Time-stamp: "2023-01-27 00:01:30 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -18,6 +18,7 @@ import urllib
 from bs4 import BeautifulSoup
 from http.client import IncompleteRead
 import html
+import socket
 import time
 
 import Tools
@@ -49,7 +50,8 @@ def import_bookmarks(noteStore, notebooks):
                                 print("{} -> Note already exists".format(url.name.lower()))
                                 NoteExists = True
                                 break
-                    except:
+                    except socket.gaierror as sgai:
+                        print("socket.gaierror: Name or service not known")
                         NoteExists = False
                 if NoteExists == True:
                     break

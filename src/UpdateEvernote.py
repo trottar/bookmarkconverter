@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-25 23:25:19 trottar"
+# Time-stamp: "2023-01-27 00:00:56 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -12,6 +12,7 @@
 #
 from evernote.api.client import EvernoteClient
 import evernote.edam.type.ttypes as Types
+import socket
 import os
 
 from GetBookmarks import import_bookmarks
@@ -57,7 +58,11 @@ for i, row in bm_df.iterrows():
         nb_name_list.append(notebook.name)
     inp_nb = nb_list[nb_name_list.index(row["folder"])]
     inp_nb.stack = "Chrome Bookmarks"
-    noteStore.updateNotebook(inp_nb)
+    try:
+        noteStore.updateNotebook(inp_nb)
+    except socket.gaierror as sgai:
+        print("socket.gaierror: Name or service not known")
+        continue
 
 
     if "bookmarks" not in tag_name_list:
