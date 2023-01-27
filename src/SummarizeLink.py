@@ -3,7 +3,7 @@
 #
 # Description: https://www.activestate.com/blog/how-to-do-text-summarization-with-python/
 # ================================================================
-# Time-stamp: "2023-01-27 17:57:31 trottar"
+# Time-stamp: "2023-01-27 18:17:50 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -47,7 +47,10 @@ def summarize(text, per):
                     word_frequencies[word.text] = 1
                 else:
                     word_frequencies[word.text] += 1
-    max_frequency=max(word_frequencies.values())
+    try:
+        max_frequency=max(word_frequencies.values())
+    except ValueError:
+        max_frequency=0
     for word in word_frequencies.keys():
         word_frequencies[word]=word_frequencies[word]/max_frequency
     sentence_tokens= [sent for sent in doc.sents]
