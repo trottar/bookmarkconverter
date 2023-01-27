@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-27 00:00:56 trottar"
+# Time-stamp: "2023-01-27 13:25:05 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -61,7 +61,7 @@ for i, row in bm_df.iterrows():
     try:
         noteStore.updateNotebook(inp_nb)
     except socket.gaierror as sgai:
-        print("socket.gaierror: Name or service not known")
+        print("socket.gaierror: ", sgai)
         continue
 
 

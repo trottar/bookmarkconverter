@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-27 00:09:50 trottar"
+# Time-stamp: "2023-01-27 13:23:59 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -51,9 +51,9 @@ def import_bookmarks(noteStore, notebooks):
                                 NoteExists = True
                                 break
                     except socket.gaierror as sgai:
-                        print("socket.gaierror: Name or service not known")
+                        print("socket.gaierror: ", sgai)
                     except BlockingIOError as bioe:
-                        print("BlockingIOError: Resource temporarily unavailable")
+                        print("BlockingIOError: ", bioe)
                         NoteExists = False
                 if NoteExists == True:
                     break

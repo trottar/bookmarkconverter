@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-27 10:18:30 trottar"
+# Time-stamp: "2023-01-27 13:24:18 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -76,15 +76,21 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
         ## http://dev.evernote.com/documentation/reference/Errors.html#Enum_EDAMErrorCode
         print("EDAMUserException:", edue)
         return None
+    except Errors.EDAMSystemException as edue:
+        ## Something was wrong with the note data
+        ## See EDAMErrorCode enumeration for error code explanation
+        ## http://dev.evernote.com/documentation/reference/Errors.html#Enum_EDAMErrorCode
+        print("EDAMSystemException:", edue)
+        return None    
     except Errors.EDAMNotFoundException as ednfe:
         ## Parent Notebook GUID doesn't correspond to an actual notebook
-        print("EDAMNotFoundException: Invalid parent notebook GUID")
+        print("EDAMNotFoundException: ", ednfe)
         return None
     except socket.gaierror as sgai:
-        print("socket.gaierror: Name or service not known")
+        print("socket.gaierror: ", sgai)
         return None
     except BlockingIOError as bioe:
-        print("BlockingIOError: Resource temporarily unavailable")
+        print("BlockingIOError: ", bioe)
         return None
     ## Return created note object
     return note
