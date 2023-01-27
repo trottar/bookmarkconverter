@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-26 18:07:46 trottar"
+# Time-stamp: "2023-01-27 10:18:30 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -82,6 +82,9 @@ def makeNote(noteStore, noteTitle, noteBody, noteTag=None, parentNotebook=None):
         return None
     except socket.gaierror as sgai:
         print("socket.gaierror: Name or service not known")
+        return None
+    except BlockingIOError as bioe:
+        print("BlockingIOError: Resource temporarily unavailable")
         return None
     ## Return created note object
     return note
