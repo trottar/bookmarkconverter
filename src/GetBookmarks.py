@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-27 13:23:59 trottar"
+# Time-stamp: "2023-01-27 19:31:55 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -54,6 +54,15 @@ def import_bookmarks(noteStore, notebooks):
                         print("socket.gaierror: ", sgai)
                     except BlockingIOError as bioe:
                         print("BlockingIOError: ", bioe)
+                        NoteExists = False
+                    except Errors.EDAMUserException as edue:
+                        print("EDAMUserException:", edue)
+                        NoteExists = False
+                    except Errors.EDAMSystemException as edue:
+                        print("EDAMSystemException:", edue)
+                        NoteExists = False
+                    except Errors.EDAMNotFoundException as ednfe:
+                        print("EDAMNotFoundException: ", ednfe)
                         NoteExists = False
                 if NoteExists == True:
                     break
