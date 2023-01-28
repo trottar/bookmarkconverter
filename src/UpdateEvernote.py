@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-27 22:52:47 trottar"
+# Time-stamp: "2023-01-27 23:17:36 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -11,6 +11,7 @@
 # Copyright (c) trottar
 #
 from evernote.api.client import EvernoteClient
+import evernote.edam.error.ttypes as Errors
 import evernote.edam.type.ttypes as Types
 import socket
 import os

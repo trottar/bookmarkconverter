@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-27 19:31:55 trottar"
+# Time-stamp: "2023-01-27 23:17:30 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -11,6 +11,7 @@
 # Copyright (c) trottar
 #
 from evernote.edam.notestore.ttypes import NoteFilter
+import evernote.edam.error.ttypes as Errors
 import pandas as pd
 import chrome_bookmarks
 from urllib.parse import parse_qs, urlparse
