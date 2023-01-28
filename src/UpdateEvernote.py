@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-27 16:00:16 trottar"
+# Time-stamp: "2023-01-27 22:52:47 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -49,16 +49,16 @@ print("-"*30)
 bm_df = import_bookmarks(noteStore, notebooks)
 
 for i, row in bm_df.iterrows():
-    if row["folder"] not in nb_name_list:
-        print("\nCreating notebook '{}' in stack 'Chrome Bookmarks'...\n".format(row["folder"]))
-        notebook = Types.Notebook()
-        notebook.name = row["folder"]
-        notebook = noteStore.createNotebook(notebook)
-        nb_list.append(notebook)
-        nb_name_list.append(notebook.name)
-    inp_nb = nb_list[nb_name_list.index(row["folder"])]
-    inp_nb.stack = "Chrome Bookmarks"
     try:
+        if row["folder"] not in nb_name_list:
+            print("\nCreating notebook '{}' in stack 'Chrome Bookmarks'...\n".format(row["folder"]))
+            notebook = Types.Notebook()
+            notebook.name = row["folder"]
+            notebook = noteStore.createNotebook(notebook)
+            nb_list.append(notebook)
+            nb_name_list.append(notebook.name)
+        inp_nb = nb_list[nb_name_list.index(row["folder"])]
+        inp_nb.stack = "Chrome Bookmarks"
         noteStore.updateNotebook(inp_nb)
     except socket.gaierror as sgai:
         print("socket.gaierror: ", sgai)
