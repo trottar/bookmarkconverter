@@ -3,7 +3,7 @@
 #
 # Description:
 # ================================================================
-# Time-stamp: "2023-01-27 23:17:36 trottar"
+# Time-stamp: "2023-01-28 01:56:19 trottar"
 # ================================================================
 #
 # Author:  Richard L. Trotta III <trotta@cua.edu>
@@ -73,7 +73,10 @@ for i, row in bm_df.iterrows():
     except Errors.EDAMNotFoundException as ednfe:
         print("EDAMNotFoundException: ", ednfe)
         continue
-
+    except BlockingIOError as bioe:
+        print("BlockingIOError: ", bioe)
+        continue
+        
     if "bookmarks" not in tag_name_list:
         print("\nCreating tag '{}'...\n".format("bookmarks"))
         noteTag = Types.Tag()
